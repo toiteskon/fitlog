@@ -1,0 +1,42 @@
+FitLog – installer l'appli sur ton iPhone (gratuit, ~15 min)
+=============================================================
+
+Ce dossier contient l'appli complète (6 fichiers) :
+  index.html, manifest.webmanifest, sw.js, icon-192.png, icon-512.png, apple-touch-icon.png
+
+ÉTAPE 1 – Mettre l'appli en ligne avec GitHub Pages (depuis ton PC)
+-------------------------------------------------------------------
+1. Dézippe ce dossier sur ton PC.
+2. Crée un compte gratuit sur https://github.com (retiens ton pseudo).
+3. En haut à droite : « + » → « New repository ».
+   - Repository name : fitlog
+   - Coche « Public »
+   - Clique « Create repository ».
+4. Sur la page qui s'affiche, clique le lien « uploading an existing file ».
+5. Glisse les 6 FICHIERS (pas le dossier) dans la zone, puis clique « Commit changes ».
+6. Va dans « Settings » (onglet du dépôt) → menu de gauche « Pages ».
+   - Source : « Deploy from a branch »
+   - Branch : « main » et dossier « / (root) » → « Save ».
+7. Attends 1 à 2 minutes et recharge la page : l'adresse de ton appli s'affiche,
+   du type  https://TONPSEUDO.github.io/fitlog/
+
+ÉTAPE 2 – L'installer sur l'iPhone
+----------------------------------
+1. Ouvre cette adresse dans SAFARI (pas Chrome).
+2. Touche le bouton Partager (carré avec flèche vers le haut).
+3. « Sur l'écran d'accueil » → « Ajouter ».
+4. Lance FitLog depuis son icône : elle s'ouvre en plein écran, comme une appli,
+   et fonctionne même sans réseau à la salle.
+
+BON À SAVOIR
+------------
+- Au premier lancement, l'appli te redemande ton prénom, ton poids, etc. :
+  ton planning, tes charges de départ et ton plan nutrition sont déjà inclus.
+- Tes données restent sur ton téléphone (rien n'est envoyé sur Internet).
+  Fais une sauvegarde de temps en temps : Plus → Réglages → « Exporter mes données »,
+  colle le texte dans tes notes. « Importer » permet de tout récupérer.
+- Le code de l'appli est public sur GitHub, mais tes données personnelles n'y sont pas.
+- Mise à jour : si une nouvelle version de index.html t'est fournie, ouvre ton dépôt
+  sur GitHub → « Add file » → « Upload files » → glisse le nouveau fichier → « Commit changes ».
+  Rouvre l'appli (avec réseau) une ou deux fois pour qu'elle se mette à jour.
+- Sur iPhone, mets le téléphone hors mode silencieux pour entendre les bips et la voix.
