@@ -138,7 +138,7 @@ var EXRAW=[
 ['pushdown','Extensions triceps poulie',4],['skull','Barre au front',4],['oh_ext','Extension triceps au-dessus de la tête',4],['close_bench','Développé couché prise serrée',4],['kickback','Kickback triceps',4],['bench_dips','Dips sur banc',4],
 ['squat','Squat',5],['front_squat','Squat avant',5],['leg_press','Presse à cuisses',5],['leg_ext','Leg extension',5],['lunge','Fentes',5],['bulgarian','Squat bulgare',5],['hack','Hack squat',5],['goblet','Goblet squat',5],
 ['rdl','Soulevé de terre roumain',6],['leg_curl','Leg curl allongé',6],['seated_curl','Leg curl assis',6],['good_morning','Good morning',6],
-['hip_thrust','Hip thrust',7],['glute_bridge','Pont fessier',7],['abduct','Abducteurs machine',7],['glute_kick','Kickback fessier poulie',7],
+['hip_thrust','Hip thrust',7],['glute_bridge','Pont fessier',7],['abduct','Abducteurs machine',7],['adduct','Adducteurs machine',7],['glute_kick','Kickback fessier poulie',7],
 ['calf_stand','Mollets debout',8],['calf_seat','Mollets assis',8],
 ['crunch','Crunch',9],['plank','Gainage (secondes)',9],['leg_raise','Relevé de jambes',9],['russian','Russian twist',9],['ab_wheel','Roue abdominale',9],['cable_crunch','Crunch poulie',9],
 ['shoulder_press_m','Développé épaules machine',2],['lat_raise_cable','Élévations latérales poulie',2],['pike_pushup','Pompes piquées (épaules)',2],['curl_machine','Curl biceps machine',3],['tri_machine','Extension triceps machine',4],['diamond_pushup','Pompes serrées (diamant)',4],['low_row','Tirage horizontal (Low row)',1],['back_machine','Lombaires machine',1],['superman','Superman (au sol)',1],['ab_machine','Abdos machine',9],['side_plank','Gainage latéral (secondes)',9],['crunch_bike','Crunch vélo',9],['dead_bug','Dead bug',9],['vacuum','Vacuum abdominal (secondes)',9],['mountain','Mountain climbers',9],
@@ -169,7 +169,7 @@ function PRESETS(){
   P('Legs – Jambes',[['squat',4,8,150],['rdl',3,10,120],['leg_press',3,12],['leg_curl',3,12,60],['calf_stand',4,15,60]])
  ];
 }
-var SUGW={cable_crunch:25,chest_press:35,lat_pull:40,db_press:12,low_row:40,lat_raise:6,curl_machine:20,pushdown:20,leg_press:80,bulgarian:8,leg_curl:30,leg_ext:30,rear_delt:20,lat_raise_cable:5,hammer:10,tri_machine:20,incline_db:14,db_row:16,shoulder_press_m:25,face_pull:15,pec_deck:30,incline_curl:8,oh_ext:15,ab_machine:25,bench:40,db_bench:14,squat:40,rdl:40,curl:20,db_curl:10,ohp:25,row:35,cable_row:40};
+var SUGW={abduct:30,adduct:30,cable_crunch:25,chest_press:35,lat_pull:40,db_press:12,low_row:40,lat_raise:6,curl_machine:20,pushdown:20,leg_press:80,bulgarian:8,leg_curl:30,leg_ext:30,rear_delt:20,lat_raise_cable:5,hammer:10,tri_machine:20,incline_db:14,db_row:16,shoulder_press_m:25,face_pull:15,pec_deck:30,incline_curl:8,oh_ext:15,ab_machine:25,bench:40,db_bench:14,squat:40,rdl:40,curl:20,db_curl:10,ohp:25,row:35,cable_row:40};
 function sugW(ex,inc){var b=SUGW[ex];if(!b)return '';var f=num(S.profile.weight||75)/75;f=Math.max(0.75,Math.min(1.3,f))*(S.profile.sex==='f'?0.65:1);return roundTo(b*f,inc||2.5)||b;}
 function fillW(){S.programs.forEach(function(p){if(!p.day)return;p.items.forEach(function(i){if(!i.bw&&(i.w===''||i.w==null)){var v=sugW(i.ex,num(i.inc)||2.5);if(v){i.w=v;i.msg='Charge de départ proposée : ajuste-la si besoin';}}});});}
 var WE_NAME='Abdos : taille fine (week-end)',WE_DESC='Sans matériel, ~25 min sur un tapis. Transverse (la « gaine » qui affine la taille), obliques et grand droit pour un ventre plat et ferme.';
@@ -202,11 +202,13 @@ function PLAN(){
    ['leg_press',4,'10-12',150,'3-0-1',5,'Pieds largeur d’épaules, ne verrouille pas les genoux'],
    ['bulgarian',3,'8-10',90,'2-0-1',2,'Par jambe, pied arrière sur un banc. 1re fois : sans charge ou 6–10 kg par haltère'],
    ['leg_curl',3,'10-12',90,'3-0-1',2.5,'Machine quadriceps/ischios'],
-   ['leg_ext',3,'12-15',60,'2-1-1',2.5,'Même machine, contracte 1 s en haut'],
+   ['leg_ext',2,'12-15',60,'2-1-1',2.5,'Même machine, contracte 1 s en haut'],
    ['rear_delt',3,'12-15',60,'2-1-2',2.5,'Tunturi Pec Fly / Rear Delt, côté arrière d’épaule'],
    ['lat_raise_cable',3,'12-15',60,'2-1-2',2.5,'Poulie basse, un bras à la fois (3 séries par bras)'],
    ['hammer',3,'10-12',60,'2-0-1',2,'Repère : 10–14 kg par haltère'],
-   ['tri_machine',3,'10-12',60,'2-1-1',2.5,'Machine biceps/triceps']
+   ['tri_machine',3,'10-12',60,'2-1-1',2.5,'Machine biceps/triceps'],
+   ['adduct',2,'12-15',60,'2-1-2',2.5,'Tunturi abducteurs/adducteurs : serre les genoux, dos contre le dossier'],
+   ['abduct',2,'12-15',60,'2-1-2',2.5,'Même machine : écarte les genoux, tiens 1 s ouvert']
   ]),
   P('ven','Haut du corps B','Variantes du lundi + gros volume épaules et bras.',[
    ['incline_db',3,'8-12',120,'3-0-1',2,'Banc incliné à 30°. Repère : 16–20 kg par haltère'],
@@ -253,6 +255,13 @@ function load(){
    if((p.day==='lun'||p.day==='ven')&&!p.items.some(function(i){return i.ex==='cable_crunch';}))p.items.push(mkI('cable_crunch',3,'10-15',60,'2-1-2',2.5,'Poulie haute avec corde, à genoux : enroule le buste vers les genoux sans tirer avec les bras'));
   });
   S.upV='v3';MIGRATED=true;}
+ if(S.upV4!=='v1'){
+  S.programs.forEach(function(p){if(p.day!=='mer')return;
+   p.items.forEach(function(i){if(i.ex==='leg_ext'&&num(i.sets)===3)i.sets=2;});
+   var mk=function(ex,hint){return {ex:ex,sets:2,reps:'12-15',rest:60,tempo:'2-1-2',inc:2.5,hint:hint,bw:false,w:sugW(ex,2.5)||'',msg:'Charge de départ proposée : ajuste-la si besoin'};};
+   if(!p.items.some(function(i){return i.ex==='adduct';}))p.items.push(mk('adduct','Tunturi abducteurs/adducteurs : serre les genoux, dos contre le dossier'));
+   if(!p.items.some(function(i){return i.ex==='abduct';}))p.items.push(mk('abduct','Même machine : écarte les genoux, tiens 1 s ouvert'));});
+  S.upV4='v1';MIGRATED=true;}
  if(S.absV!=='v1'){S.programs.forEach(function(p){if(p.day==='ven')p.items=p.items.filter(function(i){return i.ex!=='ab_machine';});});var we=S.programs.find(function(p){return p.day==='we';});if(we){we.name=WE_NAME;we.desc=WE_DESC;we.items=WE_ITEMS();}else S.programs.push({id:uid(),day:'we',name:WE_NAME,desc:WE_DESC,items:WE_ITEMS()});S.absV='v1';MIGRATED=true;}
  return unsynced;
 }
@@ -814,14 +823,21 @@ var ANIM={
 ANIM.deadBug=T({ecc:0,hl:'c',go:'Allonge bras et jambe opposés',back:'Reviens au centre',scene:function(){return R(30,146,150,4,'#6a6e77');},A:{x:112,y:142,t:180,a1:-90,a2:-90,l1:-90,l2:0}},{a1:192,a2:192,l1:-12,l2:-12});
 ANIM.vacuum=T({ecc:0,hl:'c',timed:1,A:{fx:100,fy:150,l1:90,l2:90,t:-90,a1:118,a2:20}},{});
 var FRONT={latRaise:{ecc:0,go:'Monte les bras sur les côtés',back:'Descends lentement',A:12,B:85,tool:'db'},fly:{ecc:0,go:'Serre les bras',back:'Ouvre lentement',A:1,B:0.3,fly:1},flyRev:{ecc:0,go:'Écarte les bras',back:'Reviens lentement',A:0.25,B:1,fly:2}};
+FRONT.abd={ecc:0,legs:1,go:'Écarte les genoux',back:'Reviens lentement',A:0,B:1};FRONT.add={ecc:0,legs:2,go:'Serre les genoux',back:'Ouvre lentement',A:1,B:0};
 var BIKE={ecc:0,cont:1,go:'Pédale',back:'Pédale'};
-var ANIM_OF={chest_press:'chestPress',bench:'benchPress',db_bench:'benchPress',decline:'benchPress',close_bench:'benchPress',incline_bench:'inclinePress',incline_db:'inclinePress',fly:'fly',cable_fly:'fly',pec_deck:'fly',rear_delt:'flyRev',pushup:'pushup',diamond_pushup:'pushup',pike_pushup:'pushup',dips:'dips',bench_dips:'dips',pullup:'latPull',lat_pull:'latPull',pullover:'latPull',cable_row:'row',low_row:'row',face_pull:'row',row:'bentRow',db_row:'bentRow',tbar:'bentRow',deadlift:'hinge',rdl:'hinge',good_morning:'hinge',hyperext:'hinge',back_machine:'hinge',ohp:'shoulderPress',db_press:'shoulderPress',arnold:'shoulderPress',shoulder_press_m:'shoulderPress',lat_raise:'latRaise',lat_raise_cable:'latRaise',upright:'latRaise',front_raise:'frontRaise',curl:'curl',db_curl:'curl',hammer:'curl',preacher:'curl',cable_curl:'curl',incline_curl:'curl',curl_machine:'curl',pushdown:'triPush',kickback:'triPush',tri_machine:'triPush',oh_ext:'triOver',skull:'triOver',squat:'squat',front_squat:'squat',hack:'squat',goblet:'squat',lunge:'squat',bulgarian:'squat',leg_press:'legPress',leg_ext:'legExt',leg_curl:'legCurl',seated_curl:'legCurl',hip_thrust:'hipThrust',glute_bridge:'hipThrust',glute_kick:'hipThrust',calf_stand:'calf',calf_seat:'calf',crunch:'crunch',ab_machine:'crunch',cable_crunch:'crunch',russian:'crunch',crunch_bike:'crunch',mountain:'crunch',leg_raise:'legRaise',dead_bug:'deadBug',vacuum:'vacuum',plank:'plank',side_plank:'plank',superman:'superman',shrug:'curl',abduct:'legExt'};
+var ANIM_OF={chest_press:'chestPress',bench:'benchPress',db_bench:'benchPress',decline:'benchPress',close_bench:'benchPress',incline_bench:'inclinePress',incline_db:'inclinePress',fly:'fly',cable_fly:'fly',pec_deck:'fly',rear_delt:'flyRev',pushup:'pushup',diamond_pushup:'pushup',pike_pushup:'pushup',dips:'dips',bench_dips:'dips',pullup:'latPull',lat_pull:'latPull',pullover:'latPull',cable_row:'row',low_row:'row',face_pull:'row',row:'bentRow',db_row:'bentRow',tbar:'bentRow',deadlift:'hinge',rdl:'hinge',good_morning:'hinge',hyperext:'hinge',back_machine:'hinge',ohp:'shoulderPress',db_press:'shoulderPress',arnold:'shoulderPress',shoulder_press_m:'shoulderPress',lat_raise:'latRaise',lat_raise_cable:'latRaise',upright:'latRaise',front_raise:'frontRaise',curl:'curl',db_curl:'curl',hammer:'curl',preacher:'curl',cable_curl:'curl',incline_curl:'curl',curl_machine:'curl',pushdown:'triPush',kickback:'triPush',tri_machine:'triPush',oh_ext:'triOver',skull:'triOver',squat:'squat',front_squat:'squat',hack:'squat',goblet:'squat',lunge:'squat',bulgarian:'squat',leg_press:'legPress',leg_ext:'legExt',leg_curl:'legCurl',seated_curl:'legCurl',hip_thrust:'hipThrust',glute_bridge:'hipThrust',glute_kick:'hipThrust',calf_stand:'calf',calf_seat:'calf',crunch:'crunch',ab_machine:'crunch',cable_crunch:'crunch',russian:'crunch',crunch_bike:'crunch',mountain:'crunch',leg_raise:'legRaise',dead_bug:'deadBug',vacuum:'vacuum',plank:'plank',side_plank:'plank',superman:'superman',shrug:'curl',abduct:'abd',adduct:'add'};
 var GROUP_ANIM={'Pectoraux':'chestPress','Dos':'row','Épaules':'shoulderPress','Biceps':'curl','Triceps':'triPush','Quadriceps':'squat','Ischios':'legCurl','Fessiers':'hipThrust','Mollets':'calf','Abdos':'crunch'};
 function animType(ex){var e=exById(ex);if(e.group==='Cardio')return 'bike';return ANIM_OF[ex]||GROUP_ANIM[e.group]||'curl';}
 function animDef(type){return ANIM[type]||FRONT[type]||(type==='bike'?BIKE:ANIM.curl);}
 function ease(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);}
 function figFront(def,p){
  var v=lerp(def.A,def.B,p),h='',c=HL,s1=[82,40],s2=[118,40],hp1=[91,84],hp2=[109,84];
+ if(def.legs){var k1=[hp1[0]-6-24*v,106],k2=[hp2[0]+6+24*v,106],f1=[k1[0]+2,148],f2=[k2[0]-2,148];
+  h+=R(66,90,68,6,EQ)+L([100,96],[100,150],EQ,4)+R(90,26,20,66,'#6a6e77',3)+C([k1[0]+(def.legs===1?-7:7),106],5,'#8b93a1')+C([k2[0]+(def.legs===1?7:-7),106],5,'#8b93a1');
+  h+=L(s1,s2,BODY,8)+L(s1,hp1,BODY,8)+L(s2,hp2,BODY,8)+L(hp1,hp2,BODY,8)+C([100,22],10,BODY);
+  h+=L(s1,[76,64],BODY,8)+L([76,64],[72,88],BODY,8)+L(s2,[124,64],BODY,8)+L([124,64],[128,88],BODY,8);
+  h+=L(hp1,k1,BODY,8)+L(k1,f1,BODY,8)+L(hp2,k2,BODY,8)+L(k2,f2,BODY,8);
+  return h;}
  if(def.fly){h+=R(70,96,60,6,EQ)+L([100,102],[100,150],EQ,4)+R(92,30,16,70,'#6a6e77',3);}
  h+=L(s1,s2,BODY,8)+L(s1,hp1,BODY,8)+L(s2,hp2,BODY,8)+L(hp1,hp2,BODY,8);
  if(def.fly){h+=L(hp1,[86,112],BODY,8)+L([86,112],[86,148],BODY,8)+L(hp2,[114,112],BODY,8)+L([114,112],[114,148],BODY,8);}
